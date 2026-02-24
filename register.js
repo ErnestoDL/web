@@ -7,15 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
     msg.className = "msg" + (type ? ` ${type}` : "");
   }
 
-  function getUsers() {
-    try {
-      return JSON.parse(localStorage.getItem("users") || "[]");
-    } catch {
-      return [];
-    }
+  function readUsers() {
+    if (typeof getUsers === "function") return getUsers();
+    try { return JSON.parse(localStorage.getItem("users") || "[]"); } catch { return []; }
   }
 
   function saveUsers(users) {
+    if (typeof setUsers === "function") return setUsers(users);
     localStorage.setItem("users", JSON.stringify(users));
   }
 
@@ -33,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const users = getUsers();
+    const users = readUsers();
     const exists = users.some(u => (u.email || "").toLowerCase() === email);
     if (exists) {
       setMsg("Ese correo ya está registrado.", "error");
@@ -44,13 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
     users.push(newUser);
     saveUsers(users);
 
+    const safeUsers = users.map(u => ({ id: u.id, name: u.name, email: u.email }));
     console.log("Registro:", { id: newUser.id, name: newUser.name, email: newUser.email });
-    const safeUsers = users.map(({ id, name, email }) => ({ id, name, email }));
-    console.log(`Usuarios registrados (total: ${safeUsers.length})`);
     console.table(safeUsers);
-
-    sessionStorage.setItem("debugUsersAfterRegister", "1");
-    sessionStorage.setItem("debugUsersData", JSON.stringify(safeUsers));
+    console.log("Total users:", safeUsers.length);
     setMsg("Registro exitoso. Ahora puedes iniciar sesión.", "ok");
     setTimeout(() => { window.location.href = "login.html"; }, 600);
   });
