@@ -12,8 +12,14 @@
 
   <main>
     <div class="container">
-      <h1>Página interior 1</h1>
-      <p>Contenido de la página.</p>
+      <h1>PokeAPI</h1>
+
+      <section class="pokemon" aria-label="Pokémon (PokeAPI)">
+        <h2>Pokémon</h2>
+        <img id="pokemonImg" src="" alt="" loading="lazy" />
+        <p id="pokemonName"></p>
+        <p id="pokemonMsg" class="msg error" style="display:none;"></p>
+      </section>
     </div>
   </main>
 
@@ -21,5 +27,6 @@
 
   <script src="session.js"></script>
   <script src="includes.js"></script>
+  <script src="pokemon.js"></script>
 </body>
 </html>
