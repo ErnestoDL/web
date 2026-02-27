@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Página 1</title>
+  <title>Pokédex</title>
   <script src="auth.js"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -12,13 +12,32 @@
 
   <main>
     <div class="container">
-      <h1>PokeAPI</h1>
+      <h1>Pokédex</h1>
 
-      <section class="pokemon" aria-label="Pokémon (PokeAPI)">
-        <h2>Pokémon</h2>
-        <img id="pokemonImg" src="" alt="" loading="lazy" />
-        <p id="pokemonName"></p>
-        <p id="pokemonMsg" class="msg error" style="display:none;"></p>
+        <div class="filters" role="region" aria-label="Filtros">
+          <label class="field">
+            <span>Nombre</span>
+            <input id="filterName" type="text" placeholder="Ej. pikachu" autocomplete="off" />
+          </label>
+
+          <label class="field">
+            <span>ID</span>
+            <input id="filterId" type="number" min="1" placeholder="Ej. 25" />
+          </label>
+
+          <label class="field">
+            <span>Tipo</span>
+            <select id="filterType">
+              <option value="">Todos</option>
+            </select>
+          </label>
+
+          <button id="btnClearFilters" class="btn" type="button">Limpiar</button>
+        </div>
+
+        <p id="pokedexStatus" class="muted"></p>
+
+        <div id="pokedexGrid" class="grid" aria-live="polite"></div>
       </section>
     </div>
   </main>
@@ -27,6 +46,6 @@
 
   <script src="session.js"></script>
   <script src="includes.js"></script>
-  <script src="pokemon.js"></script>
+  <script src="pokedex.js"></script>
 </body>
 </html>

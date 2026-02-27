@@ -86,6 +86,99 @@ main{
   height: 120px;
 }
 
+/* --- Pokédex --- */
+.filters{
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.filters .field span{
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.filters select{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.btn{
+  margin-top: 0;
+  padding: 10px 14px;
+}
+
+.muted{
+  color: #666;
+}
+
+.grid{
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.card{
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+}
+
+.card-top{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.poke-img{
+  width: 72px;
+  height: 72px;
+  image-rendering: pixelated;
+}
+
+.poke-name{
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.poke-id{
+  font-size: 13px;
+  color: #666;
+}
+
+.card-body{
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.badge{
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f2f2f2;
+  margin-right: 6px;
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+@media (max-width: 860px){
+  .filters{ grid-template-columns: 1fr 1fr; }
+  .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px){
+  .filters{ grid-template-columns: 1fr; }
+  .grid{ grid-template-columns: 1fr; }
+}
+
 footer .bar{
   padding: 12px 0;
   font-size: 14px;

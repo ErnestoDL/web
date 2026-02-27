@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (typeof startSession === "function") {
       startSession(user);
     } else {
-      // Fallback
       sessionStorage.setItem("sessionToken", "tok_" + Date.now());
       sessionStorage.setItem("currentUser", JSON.stringify({ id: user.id, name: user.name, email: user.email }));
     }
