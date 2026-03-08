@@ -81,7 +81,6 @@
     return { name, id, type };
   }
 
-  // --- Render tarjetas ---
   function createCard(p) {
     const card = document.createElement('article');
     card.className = 'card';

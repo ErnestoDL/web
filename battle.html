@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Batalla Pokémon</title>
+  <script src="auth.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="siteHeader"></div>
+
+  <main>
+    <div class="container">
+      <h1>Batalla Pokémon</h1>
+      <p class="muted">Elige 2 Pokémon. La pelea se muestra por turnos.</p>
+
+      <section class="battle-setup" aria-label="Selección de Pokémon">
+        <div class="battle-pickers">
+          <label class="field">
+            <span>Pokémon 1 (nombre o ID)</span>
+            <input id="p1Input" list="pokemonList" placeholder="Ej. pikachu o 25" autocomplete="off" />
+          </label>
+
+          <label class="field">
+            <span>Pokémon 2 (nombre o ID)</span>
+            <input id="p2Input" list="pokemonList" placeholder="Ej. bulbasaur o 1" autocomplete="off" />
+          </label>
+
+          <datalist id="pokemonList"></datalist>
+
+          <div class="battle-actions">
+            <button id="btnStart" class="btn" type="button">Cargar e iniciar</button>
+            <button id="btnNext" class="btn" type="button" disabled>Siguiente turno</button>
+            <button id="btnReset" class="btn" type="button" disabled>Reiniciar</button>
+          </div>
+        </div>
+
+        <div id="setupMsg" class="msg" role="status" aria-live="polite"></div>
+      </section>
+
+      <section id="battleArea" class="battle-area" aria-label="Arena" hidden>
+        <div class="battle-grid">
+          <article class="poke-panel" aria-label="Pokémon 1">
+            <div class="poke-top">
+              <img id="p1Img" class="poke-img" alt="" />
+              <div>
+                <h2 id="p1Name" class="poke-name"></h2>
+                <p id="p1Meta" class="muted"></p>
+              </div>
+            </div>
+            <div class="hp">
+              <div class="hpbar" aria-label="Vida Pokémon 1">
+                <div id="p1HpFill" class="hpfill"></div>
+              </div>
+              <div id="p1HpText" class="hptext">100%</div>
+            </div>
+            <p id="p1Buff" class="muted"></p>
+          </article>
+
+          <article class="poke-panel" aria-label="Pokémon 2">
+            <div class="poke-top">
+              <img id="p2Img" class="poke-img" alt="" />
+              <div>
+                <h2 id="p2Name" class="poke-name"></h2>
+                <p id="p2Meta" class="muted"></p>
+              </div>
+            </div>
+            <div class="hp">
+              <div class="hpbar" aria-label="Vida Pokémon 2">
+                <div id="p2HpFill" class="hpfill"></div>
+              </div>
+              <div id="p2HpText" class="hptext">100%</div>
+            </div>
+            <p id="p2Buff" class="muted"></p>
+          </article>
+        </div>
+
+        <div class="battle-status">
+          <p id="turnLabel" class="turn"></p>
+        </div>
+
+        <section class="battle-log" aria-label="Registro de la batalla">
+          <h2>Log de batalla</h2>
+          <ol id="battleLog" class="log" aria-live="polite"></ol>
+        </section>
+
+        <section id="winnerBox" class="winner" aria-label="Ganador" hidden>
+          <h2 class="winner-title">GANADOR</h2>
+          <img id="winnerImg" class="winner-img" alt="" />
+          <p id="winnerName" class="winner-name"></p>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="session.js"></script>
+  <script src="includes.js"></script>
+  <script src="battle.js"></script>
+</body>
+</html>
